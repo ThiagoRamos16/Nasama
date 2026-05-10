@@ -3,7 +3,7 @@ import smtplib
 import ssl
 import json
 
-email_remetente = 'sunospython@gmail.com'
+email_remetente = 'seuemail@gmail.com'
 senha = open('files/senha', 'r').read()
 
 def carrega_contatos():
