@@ -79,7 +79,12 @@ Crie o arquivo `files/contatos.json` com seus contatos:
 > ⚠️ **Recomendado: Python 3.12** — versões mais recentes podem ter incompatibilidade com o PyAudio.
 
 ```bash
+# Windows com múltiplas versões Python
+py -3.12 nasama.py
+
+# Outros sistemas
 python nasama.py
+
 ```
 
 ---
