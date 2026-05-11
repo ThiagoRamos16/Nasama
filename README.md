@@ -76,7 +76,7 @@ Crie o arquivo `files/contatos.json` com seus contatos:
 ```
 
 ### 5. Execute
-> ⚠️ **Recomendado: Python 3.12** — versões mais recentes podem ter incompatibilidade com o PyAudio/playsound.
+> ⚠️ **Recomendado: Python 3.12** — versões mais recentes podem ter incompatibilidade com o PyAudio.
 
 ```bash
 python nasama.py
