@@ -4,8 +4,8 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame
 import speech_recognition as sr
 import sys
-import teste_os
-import teste_email
+import funcoes_so
+import funcoes_email
 import threading
 import interface
 import time
