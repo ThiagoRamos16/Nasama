@@ -5,13 +5,16 @@ capaz de executar tarefas por comando de voz.
 
 > O nome **Nasama** é uma homenagem aos meus 3 pets: **Na**ni, **Sa**ndy e **Ma**ya. 🐾
 
+> Projeto desenvolvido durante o curso **OneBitCode Python**, com funcionalidades extras adicionadas como envio de e-mails por voz, agenda de contatos e interface gráfica.
 ---
 
 ## 🚀 Funcionalidades
 - ⏰ Informa a hora atual por voz
 - 📧 Envia e-mails por comando de voz
 - 🔊 Responde em português com síntese de voz
-
+- 🖥️ Interface gráfica com tema dark/light
+- 🎵 Animação no círculo ao falar
+- 💬 Histórico de conversa na tela
 ---
 
 ## 🛠️ Tecnologias utilizadas
@@ -21,7 +24,9 @@ capaz de executar tarefas por comando de voz.
 | SpeechRecognition | Reconhecimento de voz |
 | Google Speech API | Transcrição de áudio em português |
 | smtplib / ssl | Envio de e-mails |
-
+| customtkinter | Interface gráfica moderna |
+| pygame | Reprodução de áudio |
+| Pillow | Manipulação de imagens |
 ---
 
 ## 📁 Estrutura do Projeto
@@ -34,6 +39,7 @@ nasama/
 │
 ├── funcoes_email.py   # funções de envio de e-mail por voz
 ├── funcoes_so.py      # funções do sistema operacional
+├── interface.py       # interface gráfica
 ├── nasama.py          # arquivo principal
 ├── requirements.txt
 ├── .gitignore
@@ -54,6 +60,7 @@ cd nasama
 ```bash
 pip install -r requirements.txt
 ```
+> Bibliotecas instaladas: `gTTS`, `pygame`, `SpeechRecognition`, `customtkinter`, `Pillow`
 
 ### 3. Senha do Gmail
 Crie o arquivo `files/senha` com sua senha de app do Gmail.
