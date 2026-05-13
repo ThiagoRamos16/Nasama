@@ -9,6 +9,8 @@ import funcoes_email
 import threading
 import interface
 import time
+import funcoes_cotacao
+import funcoes_noticias
 
 
 
@@ -59,6 +61,34 @@ def executa_comandos(acao):
     if 'fechar assistente' in acao:
         interface.janela.after(0, interface.janela.destroy)
         sys.exit()
+        
+    elif 'desligar computador' in acao and 'uma hora' in acao:
+        interface.atualiza_status("falando")
+        interface.inicia_animacao()
+        interface.adiciona_historico("Nasama", "Computador será desligado em uma hora")
+        cria_audio('mensagem.mp3', "Computador será desligado em uma hora.")
+        funcoes_so.desliga_computador_uma_hora()
+        interface.para_animacao()
+        interface.atualiza_status("ouvindo")
+        
+    elif 'desligar computador' in acao and 'meia hora' in acao:
+        interface.atualiza_status("falando")
+        interface.inicia_animacao()
+        interface.adiciona_historico("Nasama", "Computador será desligado em meia hora.")
+        cria_audio('mensagem.mp3', "Computador será desligado em meia hora.")
+        funcoes_so.desliga_computador_meia_hora()
+        interface.para_animacao()
+        interface.atualiza_status("ouvindo")
+        
+    elif 'cancelar desligamento' in acao:
+        interface.atualiza_status("falando")
+        interface.inicia_animacao()
+        interface.adiciona_historico("Nasama", "Desligamento cancelado.")
+        cria_audio('mensagem.mp3', "Desligamento cancelado.")
+        funcoes_so.cancela_desligamento()
+        interface.para_animacao()
+        interface.atualiza_status("ouvindo")
+ 
     elif 'horas' in acao:
         hora = funcoes_so.verifica_hora()
         interface.atualiza_status("falando")
@@ -78,6 +108,62 @@ def executa_comandos(acao):
         interface.para_animacao()
         interface.atualiza_status("ouvindo")
         
+    elif 'cotação' in acao and 'dólar' in acao:
+        interface.atualiza_status("falando")
+        interface.inicia_animacao()
+        cotacao = funcoes_cotacao.cotacao_moeda("Dólar")
+        interface.adiciona_historico("Nasama", cotacao)
+        cria_audio('mensagem.mp3', cotacao)
+        interface.para_animacao()
+        interface.atualiza_status("ouvindo")
+        
+    elif 'cotação' in acao and 'euro' in acao:
+        interface.atualiza_status("falando")
+        interface.inicia_animacao()
+        cotacao = funcoes_cotacao.cotacao_moeda("Euro")
+        interface.adiciona_historico("Nasama", cotacao)
+        cria_audio('mensagem.mp3', cotacao)
+        interface.para_animacao()
+        interface.atualiza_status("ouvindo")
+
+    elif 'cotação' in acao and 'bitcoin' in acao:
+        interface.atualiza_status("falando")
+        interface.inicia_animacao()
+        cotacao = funcoes_cotacao.cotacao_moeda("Bitcoin")
+        interface.adiciona_historico("Nasama", cotacao)
+        cria_audio('mensagem.mp3', cotacao)
+        interface.para_animacao()
+        interface.atualiza_status("ouvindo")
+        
+    elif 'notícias' in acao or 'noticias' in acao or "noticia" in acao or "notícia" in acao:
+        interface.atualiza_status("falando")
+        interface.inicia_animacao()
+        cria_audio('mensagem.mp3', 'De qual site você quer as notícias? Google, Globo, UOL, BBC ou Folha?')
+        interface.para_animacao()
+        interface.atualiza_status("ouvindo")
+        
+        resposta = monitora_audio(executar_comando=False)
+        
+        if 'globo' in resposta or 'g1' in resposta:
+            fonte = "globo"
+        elif 'bbc' in resposta:
+            fonte = "bbc"
+        elif 'uol' in resposta:
+            fonte = "uol"
+        elif 'folha' in resposta:
+            fonte = "folha"
+        else:
+            fonte = "google" # Caso não entender vai pesquisar na fonte do google
+        
+        interface.atualiza_status("falando")
+        interface.inicia_animacao()
+        noticias = funcoes_noticias.ultimas_noticias(fonte)
+        interface.adiciona_historico("Nasama", noticias)
+        cria_audio('mensagem.mp3', noticias)
+        interface.para_animacao()
+        interface.atualiza_status("ouvindo")
+    
+    
 
 def main():
     thread_nasama = threading.Thread(target=inicia_nasama, daemon=True)
@@ -89,6 +175,7 @@ def main():
 def inicia_nasama():
     print("inicia_nasama rodando!")
     time.sleep(2)
+    interface.atualiza_status("falando")
     interface.inicia_animacao()
     cria_audio("wellcome.mp3", "Olá, sou a Nasama. Em que posso lhe ajudar?")
     interface.para_animacao()
