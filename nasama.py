@@ -1,16 +1,24 @@
-from gtts import gTTS
+# Bibliotecas padrão do Python
 import os
+import sys
+import threading
+import time
+
+# Configuração pygame (antes do import)
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+
+# Bibliotecas externas
+from gtts import gTTS
 import pygame
 import speech_recognition as sr
-import sys
+
+# Módulos do projeto
 import funcoes_so
 import funcoes_email
-import threading
-import interface
-import time
 import funcoes_cotacao
 import funcoes_noticias
+import funcoes_clima
+import interface
 
 
 
@@ -162,6 +170,7 @@ def executa_comandos(acao):
         cria_audio('mensagem.mp3', noticias)
         interface.para_animacao()
         interface.atualiza_status("ouvindo")
+    
     
     
 
