@@ -1,11 +1,12 @@
-# 🎙️ Nasama — Assistente Virtual com IA
+# 🎙️ Nasama — Assistente Virtual
 
 Assistente virtual desenvolvida em Python com reconhecimento e síntese de voz,
 capaz de executar tarefas por comando de voz.
 
 > O nome **Nasama** é uma homenagem aos meus 3 pets: **Na**ni, **Sa**ndy e **Ma**ya. 🐾
 
-> Projeto desenvolvido durante o curso **OneBitCode Python**, com funcionalidades extras adicionadas como envio de e-mails por voz, agenda de contatos e interface gráfica.
+> Projeto desenvolvido durante o curso **OneBitCode Python**, com funcionalidades extras adicionadas como envio de e-mails por voz, agenda de contatos, interface gráfica e busca de notícias em 5 sites diferentes.
+
 ---
 
 ## 🚀 Funcionalidades
@@ -15,6 +16,10 @@ capaz de executar tarefas por comando de voz.
 - 🖥️ Interface gráfica com tema dark/light
 - 🎵 Animação no círculo ao falar
 - 💬 Histórico de conversa na tela
+- 📰 Notícias de 5 fontes RSS (Google News, G1, BBC, UOL, Folha)
+- 💰 Cotação de moedas (Dólar, Euro, Bitcoin)
+- 🖥️ Desliga e cancela desligamento do computador por voz
+
 ---
 
 ## 🛠️ Tecnologias utilizadas
@@ -27,6 +32,10 @@ capaz de executar tarefas por comando de voz.
 | customtkinter | Interface gráfica moderna |
 | pygame | Reprodução de áudio |
 | Pillow | Manipulação de imagens |
+| requests | Consumo de APIs externas |
+| BeautifulSoup4 | Leitura de feeds RSS |
+| lxml | Parser XML para RSS |
+
 ---
 
 ## 📁 Estrutura do Projeto
@@ -34,13 +43,15 @@ capaz de executar tarefas por comando de voz.
 nasama/
 │
 ├── files/
-│   ├── senha          # não incluso — senha de app do Gmail
-│   └── contatos.json  # não incluso — agenda de contatos
+│   ├── senha            # não incluso — senha de app do Gmail
+│   └── contatos.json    # não incluso — agenda de contatos
 │
-├── funcoes_email.py   # funções de envio de e-mail por voz
-├── funcoes_so.py      # funções do sistema operacional
-├── interface.py       # interface gráfica
-├── nasama.py          # arquivo principal
+├── funcoes_email.py     # funções de envio de e-mail por voz
+├── funcoes_so.py        # funções do sistema operacional
+├── funcoes_noticias.py  # notícias de 5 fontes RSS
+├── funcoes_cotacao.py   # cotação de moedas
+├── interface.py         # interface gráfica
+├── nasama.py            # arquivo principal
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -52,7 +63,7 @@ nasama/
 
 ### 1. Clone o repositório
 ```bash
-git clone https://github.com/ThiagoRamos16/nasama.git
+git clone https://github.com/ThiagoRamos16/Nasama.git
 cd nasama
 ```
 
@@ -60,7 +71,7 @@ cd nasama
 ```bash
 pip install -r requirements.txt
 ```
-> Bibliotecas instaladas: `gTTS`, `pygame`, `SpeechRecognition`, `customtkinter`, `Pillow`
+> Bibliotecas instaladas: `gTTS`, `pygame`, `SpeechRecognition`, `customtkinter`, `Pillow`, `requests`, `beautifulsoup4`, `lxml`
 
 ### 3. Senha do Gmail
 Crie o arquivo `files/senha` com sua senha de app do Gmail.
@@ -84,7 +95,6 @@ py -3.12 nasama.py
 
 # Outros sistemas
 python nasama.py
-
 ```
 
 ---
@@ -94,6 +104,13 @@ python nasama.py
 |---|---|
 | *"horas"* | Informa a hora atual |
 | *"enviar e-mail"* | Inicia o fluxo de envio de e-mail por voz |
+| *"notícias"* | Pergunta a fonte e lê as 3 últimas notícias |
+| *"cotação do dólar"* | Informa a cotação do Dólar |
+| *"cotação do euro"* | Informa a cotação do Euro |
+| *"cotação do bitcoin"* | Informa a cotação do Bitcoin |
+| *"desligar computador em uma hora"* | Agenda desligamento em 1 hora |
+| *"desligar computador em meia hora"* | Agenda desligamento em 30 minutos |
+| *"cancelar desligamento"* | Cancela o desligamento agendado |
 | *"fechar assistente"* | Encerra a Nasama |
 
 ---
