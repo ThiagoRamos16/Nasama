@@ -75,7 +75,7 @@ nasama/
 ### 1. Clone o repositório
 ```bash
 git clone https://github.com/ThiagoRamos16/Nasama-1.0.git
-cd nasama
+cd Nasama-1.0
 ```
 
 ### 2. Instale as dependências
