@@ -9,6 +9,14 @@ capaz de executar tarefas por comando de voz.
 
 ---
 
+## 📸 Interface          ← ✅ aqui, antes das funcionalidades
+
+| Dark | Light |
+|---|---|
+| ![dark](screenshots/dark.png) | ![light](screenshots/light.png) |
+
+---
+
 ## 🚀 Funcionalidades
 - ⏰ Informa a hora atual por voz
 - 📧 Envia e-mails por comando de voz
